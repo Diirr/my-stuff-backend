@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Items</title>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    th, td {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 5px;
+        text-align: left;
+    }
+</style>
+<body>
+<h3>Items</h3>
+<a href="/item">Add a new item!</a>
+<br><br>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Amount</th>
+        <th>Location</th>
+        <th>Description</th>
+        <th>Last Used</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${items}">
+        <td th:text="${item.id}">Id</td>
+        <td th:text="${item.name}">Name</td>
+        <td th:text="${item.amount}">Amount</td>
+        <td th:text="${item.location}">Location</td>
+         <td th:text="${item.description}">Description</td>
+          <td th:text="${item.lastUsed}">Date</td>
+        <td><a th:href="@{/item/delete(id=${item.id})}">Remove</a></td>
+    </tr>
+</tbody>
+</table>
+<br>
+</body>
+</html>

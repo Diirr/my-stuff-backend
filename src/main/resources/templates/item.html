@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Item</title>
+</head>
+<body>
+<h3 th:text="${item.id} ? 'Edit Item' : 'Create Item'">Item</h3>
+<form method="post" th:action="@{/item}" th:object="${item}">
+    <input name="id" th:field="*{id}" type="hidden">
+    <label for="item-name">Name:</label>
+    <input id="item-name" name="name" placeholder="Computer" required th:field="*{name}" type="text">
+    <br><br>
+    <label for="item-amount">Amount:</label>
+    <input id="item-amount" name="amount" placeholder="5" required th:field="*{amount}" type="number">
+    <br><br>
+    <label for="item-location">Location:</label>
+    <input id="item-location" name="location" placeholder="Wonzimmer" required th:field="*{location}" type="text">
+     <br><br>
+    <label for="item-description">Description:</label>
+    <input id="item-description" name="description" placeholder="Fuer die Arbeit" required th:field="*{description}" type="text">
+     <br><br>
+    <label for="item-lastUsed">Last Used:</label>
+    <input id="item-lastUsed" name="lastUsed" placeholder="2020-02-17" required th:field="*{lastUsed}" type="datetime-local">
+    <br><br>
+ 
+    <input type="submit" value="Send">
+</form>
+<br>
+<a href="/items">Return to the list</a>
+</body>
+</html>
